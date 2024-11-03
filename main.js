@@ -12,33 +12,15 @@ const modeBtnNavIcon = modeNavBtn.querySelector("i");
 
 const body = document.querySelector("body")
 
-modeBtn.addEventListener("click", (e) => {
-    const isDark = body.classList.contains("dark")
-    if(isDark){
-        body.classList.remove("dark"); 
-        modeBtnIcon.setAttribute("class", "ri-sun-line")
-        modeBtnNavIcon.setAttribute("class", "ri-sun-line")
-    }
-    else{
-        body.classList.toggle("dark");
-        modeBtnIcon.setAttribute("class", "ri-moon-line")
-        modeBtnNavIcon.setAttribute("class", "ri-moon-line")
-    }
-})
+function toggleDarkMode() {
+    const isDark = body.classList.toggle("dark");
+    const iconClass = isDark ? "ri-moon-line" : "ri-sun-line";
+    modeBtnIcon.className = iconClass;
+    modeBtnNavIcon.className = iconClass;
+}
 
-modeNavBtn.addEventListener("click", (e) => {
-    const isDark = body.classList.contains("dark")
-    if(isDark){
-        body.classList.remove("dark"); 
-        modeBtnIcon.setAttribute("class", "ri-sun-line")
-        modeBtnNavIcon.setAttribute("class", "ri-sun-line")
-    }
-    else{
-        body.classList.toggle("dark");
-        modeBtnIcon.setAttribute("class", "ri-moon-line")
-        modeBtnNavIcon.setAttribute("class", "ri-moon-line")
-    }
-})
+modeBtn.addEventListener("click", toggleDarkMode);
+modeNavBtn.addEventListener("click", toggleDarkMode);
 
 
 menuBtn.addEventListener("click", (e) => {
